@@ -1,0 +1,64 @@
+<div class="row text-end">
+  <div class="col-md-10">
+    <app-count-down> </app-count-down>
+  </div>
+</div>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<div class="row text-start">
+  <div class="col-md-8">
+   Q. {{presentedQuiz.question.content}}
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-check text-start">
+      <input class="form-check-input" type="radio"  formControlName="option1" id="flexRadioDefault1">
+      <label class="form-check-label " for="flexRadioDefault1">
+        {{presentedQuiz.optionList[0].content}}
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-check text-start">
+      <input class="form-check-input" type="radio" formControlName="option2" id="flexRadioDefault2">
+      <label class="form-check-label" for="flexRadioDefault2">
+        {{presentedQuiz.optionList[1].content}}
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-check text-start">
+      <input class="form-check-input" type="radio" formControlName="option3" id="flexRadioDefault3">
+      <label class="form-check-label" for="flexRadioDefault3">
+        {{presentedQuiz.optionList[2].content}}
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="form-check text-start">
+      <input class="form-check-input" type="radio" formControlName="option4" id="flexRadioDefault4">
+      <label class="form-check-label" for="flexRadioDefault4">
+        {{presentedQuiz.optionList[3].content}}
+      </label>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-md-1">
+    <button type="submit" class="btn btn-secondary align-items-start"> Next </button>
+  </div>
+</div>
+
+</form>

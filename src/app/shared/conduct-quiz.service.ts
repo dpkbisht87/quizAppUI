@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class ConductQuizService {
   quizList: Quiz[] = [];
-
   constructor() {}
 
   addNewQuiz(quiz: Quiz) {

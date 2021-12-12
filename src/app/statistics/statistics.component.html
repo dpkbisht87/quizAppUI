@@ -1,0 +1,23 @@
+  <div class="row justify-content-end col-md-12 " *ngIf="userId != -1">
+    <table class="table table-hover shadow bg-body rounded border text-center" >
+      <thead>
+        <tr>
+          <th scope="col">UserId</th>
+          <th scope="col"  style="color: green;">Correct</th>
+          <th scope="col" style="color: red;">InCorrect</th>
+          <th scope="col" style="color: grey;">Skipped</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"> {{ userId }}</th>
+          <td  style="color: green;">{{ correctAnswers }}</td>
+          <td style="color: red;">{{ incorrectAnswers }}</td>
+          <td style="color: grey;">{{ skippedAnswers }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<div class="container text-center" *ngIf="userId == -1">
+  <h1>No record found.</h1>
+</div>

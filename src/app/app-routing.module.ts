@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { CountDownComponent } from './count-down/count-down.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

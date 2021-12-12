@@ -1,6 +1,6 @@
 import { ConductQuizService } from '../shared/conduct-quiz.service';
 import { Quiz } from './../shared/model/quiz';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit } from '@angular/core';
 import { RestApiService } from '../shared/rest-api.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     public restApi: RestApiService,
     public conductQuizService : ConductQuizService
-  ) { }
+  ) {
+  }
 
 
   loadQuiz(){
@@ -35,15 +36,7 @@ export class HomeComponent implements OnInit {
         console.log('Current quiz :'+ data[i].question.content)
         this.conductQuizService.addNewQuiz(data[i]);
       }
-
       this.quizStarted = true
-      // this.Stock = data;
-      // let i = 1
-      // console.log('id: ' + this.Stock[i].id);
-      // console.log('name: ' + this.Stock[i].name);
-      // console.log('currentPrice: ' + this.Stock[i].currentPrice);
-      // console.log('lastUpdate: ' + this.Stock[i].lastUpdate);
-      // console.log('locked: ' + this.Stock[i].locked);
     })
   }
 }

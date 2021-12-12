@@ -1,6 +1,8 @@
 <div class="col-md-12 text-center">
     <button type="button" *ngIf="!quizStarted" class="btn btn-primary" (click)="loadQuiz()">Start Quiz</button>
-    <div *ngIf="quizStarted">
-      <app-problem [item]="currentItem"></app-problem>
-    </div>
+    <app-problem *ngIf="quizStarted"></app-problem>
 </div>
+<br>
+<br>
+<app-statistics></app-statistics>
+

@@ -1,9 +1,9 @@
 export class UserSubmission {
   constructor(
-    userId: number,
-    questionId: number,
-    submittedAnswerId: number,
-    status: string,
-    lifelines:  []
+    public userId: number,
+    public questionId: number,
+    public submittedAnswerId: number,
+    public status: string,
+    public lifelines: string[]
   ) {}
 }

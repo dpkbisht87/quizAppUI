@@ -1,3 +1,4 @@
+import { UserSubmission } from './model/user_submission';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -20,9 +21,30 @@ export class RestApiService {
       })
     }
 
-    // HttpClient API get() method => Fetch Stock list
+  // HttpClient API get() method => Fetch Stock list
   loadQuiz(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(this.apiURL + '/questions')
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  // save user submission
+  saveAnswer(userSubmission: UserSubmission): Observable<UserSubmission>{
+    console.log('Calling post API' + userSubmission.questionId)
+
+    return this.http.post<UserSubmission>(this.apiURL  + '/save', JSON.stringify(userSubmission), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  //Generate User Statistics
+  generateUserStatistics(userId: number): Observable<UserSubmission[]>{
+    console.log('Getting user statistics')
+    return this.http.get<UserSubmission[]>(this.apiURL + '/statistics/' + userId)
       .pipe(
         retry(1),
         catchError(this.handleError)

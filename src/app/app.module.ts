@@ -10,14 +10,16 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProblemComponent } from './problem/problem.component';
 import { CountDownComponent } from './count-down/count-down.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProblemComponent,
-    CountDownComponent
-  ],
+    CountDownComponent,
+    StatisticsComponent
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,

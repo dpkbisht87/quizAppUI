@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 
 @Component({
@@ -13,30 +13,24 @@ export class CountDownComponent implements OnInit, OnDestroy {
   public dateNow = new Date();
   public dDay = new Date();
   milliSecondsInASecond = 1000;
-  hoursInADay = 24;
-  minutesInAnHour = 60;
   SecondsInAMinute  = 60;
 
   public timeDifference;
   public secondsToDday;
-  public minutesToDday;
-  public hoursToDday;
-  public daysToDday;
 
   private getTimeDifference () {
       let seconds = this.dateNow.getTime();
       seconds = seconds + (16 * 1000);
       let then = new Date(seconds);
-      console.log('then ' + then);
       this.timeDifference = then.getTime() - new  Date().getTime();
+      if (this.timeDifference <= 1){
+        this.subscription.unsubscribe();
+      }
       this.allocateTimeUnits(this.timeDifference);
   }
 
 private allocateTimeUnits (timeDifference) {
       this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
-      this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
-      this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
-      this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
 }
 
   ngOnInit() {

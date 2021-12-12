@@ -23,6 +23,7 @@ export class ProblemComponent  implements OnInit {
   lifelines: string[];
   selectedOption?: any;
   showAnswer: boolean = false;
+  isLastQuestion: boolean = false;
 
   constructor(public restApi: RestApiService,
     public conductQuizService : ConductQuizService, private formBuilder: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) { }
@@ -70,6 +71,9 @@ export class ProblemComponent  implements OnInit {
       console.log(data)
     });
 
+    if (this.conductQuizService.quizList.length == 1){
+      this.isLastQuestion = true
+    }
     if (this.conductQuizService.quizList.length > 0){
       this.presentNewQuestion();
 

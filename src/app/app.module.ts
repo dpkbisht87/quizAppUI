@@ -9,17 +9,18 @@ import { HomeComponent } from './home/home.component';
 // HttpClient module for RESTful API
 import { HttpClientModule } from '@angular/common/http';
 import { ProblemComponent } from './problem/problem.component';
-import { CountDownComponent } from './count-down/count-down.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { CountdownTimerComponent } from './problem/countdown-timer/countdown-timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProblemComponent,
-    CountDownComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    CountdownTimerComponent
     ],
+
   imports: [
     BrowserModule,
     HttpClientModule,

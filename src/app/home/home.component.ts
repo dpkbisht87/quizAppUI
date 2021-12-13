@@ -28,12 +28,10 @@ export class HomeComponent implements OnInit {
   loadQuiz(){
     console.log('loadQuiz called')
     return this.restApi.loadQuiz().subscribe((data: Quiz[]) => {
-      console.log(data)
       this.quizList = data;
       for (let i = 0; i < data.length; i++) {
         this.currentQuiz = data[i]
 
-        console.log('Current quiz :'+ data[i].question.content)
         this.conductQuizService.addNewQuiz(data[i]);
       }
       this.quizStarted = true

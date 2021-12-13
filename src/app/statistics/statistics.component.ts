@@ -36,10 +36,6 @@ export class StatisticsComponent implements OnInit {
         } else {
           this.skippedAnswers++;
         }
-      //   this.currentQuiz = data[i]
-
-      //   console.log('Current quiz :'+ data[i].question.content)
-      //   this.conductQuizService.addNewQuiz(data[i]);
       }
       console.log('correctAnswers :' + this.correctAnswers + ', incorrectAnswers :' + this.incorrectAnswers + ', skippedAnswers :' + this.skippedAnswers);
     })

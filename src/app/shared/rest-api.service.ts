@@ -32,8 +32,6 @@ export class RestApiService {
 
   // save user submission
   saveAnswer(userSubmission: UserSubmission): Observable<UserSubmission>{
-    console.log('Calling post API' + userSubmission.questionId)
-
     return this.http.post<UserSubmission>(this.apiURL  + '/save', JSON.stringify(userSubmission), this.httpOptions)
     .pipe(
       retry(1),

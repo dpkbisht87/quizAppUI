@@ -9,9 +9,7 @@ export class ConductQuizService {
   constructor() {}
 
   addNewQuiz(quiz: Quiz) {
-    console.log('quiz ' + quiz);
     this.quizList.push(quiz);
-    console.log('Current List ' + this.quizList);
   }
 
   getAllQuiz() {

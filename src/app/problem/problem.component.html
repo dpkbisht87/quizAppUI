@@ -1,42 +1,51 @@
+
 <form [formGroup]="checkoutForm" (ngSubmit)="onNext()">
   <div class="row text-end">
-    <div class="col-md-10">
-      <app-count-down *ngIf="!quizCompleted"></app-count-down>
-    </div>
-  </div>
-  <div  *ngIf="!quizCompleted">
-  <div class="row text-start">
-    <div class="col-md-8">
-    Q. {{presentedQuiz.question.content}}
+    <div class="col text-end" *ngIf="!quizCompleted">
+      <div class="circle">
+        <h1>
+          <span> {{ seconds() }} </span>
+        </h1>
+        <app-countdown-timer *ngIf="!quizCompleted" (timerExpiredEvent)="onNext()"></app-countdown-timer>
+      </div>
     </div>
   </div>
   <br>
+    <div  *ngIf="!quizCompleted">
+      <br>
+      <div class="row text-start">
+        <div class="col-md-8">
+        Q. {{presentedQuiz.question.content}}
+        </div>
+      </div>
+    <br>
 
-  <div class="form-check"  *ngFor="let option of presentedQuiz.optionList"
-  [class.selected]="option === selectedOption"
-  (click)="onSelect(option)">
-    <div class="row text-start">
-      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-      <label class="form-check-label">
-        {{option.content}}
-      </label>
-      <br><br>
+    <div class="form-check"  *ngFor="let option of presentedQuiz.optionList"
+    [class.selected]="option === selectedOption"
+    (click)="onSelect(option)">
+      <div class="row p-2 text-start ">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label">
+          {{option.content}}
+        </label>
+        <br><br>
+      </div>
     </div>
-  </div>
-  <div class="row text-start" style="color: green;" *ngIf="showAnswer">
-    <div><span >Correct Answer is: </span>{{presentedQuiz.correctAnswer.content}}</div>
-  </div>
+    <div class="row text-start" style="color: green;" *ngIf="showAnswer">
+      <div><span >Correct Answer is: </span>{{presentedQuiz.correctAnswer.content}}</div>
+    </div>
   <br>
   <div class="row">
     <div class="col-md-1" *ngIf="!isLastQuestion">
-      <button type="submit" class="btn btn-secondary align-items-start"> Next </button>
+      <button type="submit" class="btn btn-secondary align-items-start" (click)="start()"> Next </button>
     </div>
     <div class="col-md-1" *ngIf="isLastQuestion">
       <button type="submit" class="btn btn-secondary align-items-start"> Finish </button>
     </div>
   </div>
 </div>
-</form>
-<app-statistics *ngIf="quizCompleted"></app-statistics>
 
+</form>
+
+<app-statistics *ngIf="quizCompleted"></app-statistics>
 
